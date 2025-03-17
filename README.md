@@ -1,5 +1,3 @@
-Bien sûr ! Je vais mettre à jour le README.md en ajoutant les fonctionnalités spécifiques comme les built-ins et Heredoc qui sont souvent implémentées dans un projet de type Minishell. Voici la version mise à jour du fichier README.md :
-
 # Minishell
 
 Minishell est un projet de shell simplifié développé en C, permettant d'exécuter des commandes systèmes, gérer les redirections, les pipes, ainsi que des fonctionnalités avancées comme les **built-ins** et le **Heredoc**.
