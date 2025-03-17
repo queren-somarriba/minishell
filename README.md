@@ -1,119 +1,138 @@
 # Minishell
 
-Minishell est un projet de shell simplifié développé en C, permettant d'exécuter des commandes systèmes, gérer les redirections, les pipes, ainsi que des fonctionnalités avancées comme les **built-ins** et le **Heredoc**.
+## Introduction
 
-Ce projet a été réalisé dans le cadre de la formation **42**.
+Minishell est un projet de shell simplifié développé en C, permettant d'exécuter des commandes systèmes, gérer les redirections, les pipes, ainsi que des fonctionnalités avancées comme les built-ins et le Heredoc.
 
 ## Fonctionnalités
 
 - Exécution de commandes systèmes
-- Gestion des redirections (entrées et sorties)
+- Gestion des redirections (`<`, `>`, `<<` et `>>`)
 - Gestion des pipes
 - Support de variables d'environnement
 - Gestion des erreurs et des signaux
-- **Built-ins** (cd, echo, env, exit, etc.)
-- **Heredoc** pour les entrées multiples
-- Gestion de l'historique des commandes (si implémentée)
+- Built-ins (`cd`, `echo`, `env`, `exit`, , `export`, `pwd`, `unset`)
 
 ## Installation
-
-### Prérequis
-
-Avant d'installer et de lancer **Minishell**, assurez-vous que vous avez les outils suivants installés sur votre système :
-
-- Un compilateur C (ex. : `gcc`)
-- Make
 
 ### Cloner le projet
 
 Clonez le dépôt Git sur votre machine locale :
 
-```bash
-git clone https://github.com/username/minishell.git
+```sh
+git clone https://github.com/votre-repo/minishell.git
 cd minishell
+```
 
-Compiler le projet
+### Compiler le projet
 
-Utilisez make pour compiler le projet. Cela génère l'exécutable minishell dans le répertoire courant.
+Utilisez `make` pour compiler le projet. Cela génère l'exécutable `minishell` dans le répertoire courant.
 
+```sh
 make
+```
 
-Lancer le shell
+### Lancer le shell
 
-Une fois compilé, lancez le shell en exécutant l'exécutable minishell :
+Une fois compilé, lancez le shell en exécutant l'exécutable `minishell` :
 
+```sh
 ./minishell
+```
 
-Utilisation
+## Utilisation
 
 Une fois le shell lancé, vous pouvez entrer des commandes comme dans un terminal classique. Exemple :
 
-minishell$ ls
+```sh
+minishell-$ ls
+```
 
-Built-ins
+### Built-ins
 
-Minishell prend en charge plusieurs built-ins essentiels, permettant de gérer certaines commandes directement dans le shell sans avoir recours à des processus externes. Voici les built-ins disponibles :
-cd
+Minishell prend en charge plusieurs built-ins essentiels permettant de gérer certaines commandes directement sans passer par des processus externes.
+
+#### `cd`
 
 Permet de changer le répertoire de travail courant.
 
+```sh
 minishell$ cd /path/to/directory
+```
 
-echo
+#### `echo`
 
-Affiche une chaîne de texte à la sortie standard. Supporte les options classiques comme -n pour ne pas ajouter de nouvelle ligne à la fin.
+Affiche une chaîne de texte à la sortie standard. Supporte `-n` pour ne pas ajouter de nouvelle ligne à la fin.
 
+```sh
 minishell$ echo "Hello, world!"
+```
 
-env
+#### `env`
 
 Affiche les variables d'environnement actuelles.
 
+```sh
 minishell$ env
+```
 
-exit
+#### `exit`
 
 Permet de quitter le minishell. Vous pouvez aussi spécifier un code de sortie.
 
+```sh
 minishell$ exit
 minishell$ exit 42
+```
 
-Redirections
+## Redirections
 
-Le minishell prend en charge les redirections suivantes :
+Le Minishell prend en charge les redirections suivantes :
 
-    Redirection de sortie (> ou >>) :
+### Redirection de sortie (`>` ou `>>`)
 
+```sh
 echo "Hello World" > file.txt
+```
 
-Redirection d'entrée (<) :
+Ajout au fichier existant :
 
+```sh
+echo "New Line" >> file.txt
+```
+
+### Redirection d'entrée (`<`)
+
+```sh
 cat < file.txt
+```
 
-Redirection de sortie avec ajout (>>) :
+## Pipes
 
-    echo "New Line" >> file.txt
+Vous pouvez chaîner des commandes avec des pipes (`|`) pour rediriger la sortie d'une commande vers l'entrée d'une autre :
 
-Pipes
-
-Vous pouvez chaîner des commandes avec des pipes (|) pour rediriger la sortie d'une commande vers l'entrée d'une autre :
-
+```sh
 minishell$ ls | grep "test"
+```
 
-Heredoc
+## Heredoc
 
-Le Heredoc permet de passer plusieurs lignes d'entrée à une commande sans avoir à utiliser un fichier. Cela peut être utilisé avec des commandes comme cat, ou pour rediriger plusieurs lignes vers une commande.
+Le Heredoc permet de passer plusieurs lignes d'entrée à une commande sans avoir à utiliser un fichier.
 
-Exemple d’utilisation avec cat :
+Exemple d’utilisation avec `cat` :
 
+```sh
 minishell$ cat << EOF
 Ceci est un test
-Multiple lignes
+Multiples lignes
 EOF
+```
 
-Variables d'environnement
+## Variables d'environnement
 
-Minishell permet également d'utiliser et de manipuler les variables d'environnement, comme $PATH, $HOME, etc. Exemple :
+Minishell permet d'utiliser et de manipuler les variables d'environnement, comme `$PATH`, `$HOME`, etc.
 
+```sh
 minishell$ echo $HOME
+```
 
