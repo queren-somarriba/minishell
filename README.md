@@ -1,138 +1,89 @@
-# Minishell
+#Minishell - @42Paris
+###🐚 About the project
+Minishell is a 42 school group project that consists of creating a simple shell. It is a deep dive into processes, system calls, and the inner workings of a command-line interpreter.
 
-## Introduction
+The goal was to recreate a miniature version of Bash, focusing on process synchronization, environment variable management, and redirection handling.
 
-Minishell est un projet de shell simplifié développé en C, permettant d'exécuter des commandes systèmes, gérer les redirections, les pipes, ainsi que des fonctionnalités avancées comme les built-ins et le Heredoc.
+###🚀 Features
+#####Core Functionality
+Interactive Prompt: Displays a prompt while waiting for a new command.
 
-## Fonctionnalités
+Command Execution: Search and launch executables based on the PATH variable or relative/absolute paths.
 
-- Exécution de commandes systèmes
-- Gestion des redirections (`<`, `>`, `<<` et `>>`)
-- Gestion des pipes
-- Support de variables d'environnement
-- Gestion des erreurs et des signaux
-- Built-ins (`cd`, `echo`, `env`, `exit`, , `export`, `pwd`, `unset`)
+History: Working command history (up and down arrows).
 
-## Installation
+Quotes Handling: * Single quotes (' '): Prevent the shell from interpreting meta-characters.
 
-### Cloner le projet
+Double quotes (" "): Prevent interpreting meta-characters except for $ (environment variables).
 
-Clonez le dépôt Git sur votre machine locale :
+Redirections & Pipes
+Pipes (|): Connect the output of one command to the input of the next.
 
-```sh
-git clone https://github.com/votre-repo/minishell.git
-cd minishell
-```
+Input Redirection (<): Redirect file content to stdin.
 
-### Compiler le projet
+Output Redirection (>): Redirect stdout to a file (overwrite).
 
-Utilisez `make` pour compiler le projet. Cela génère l'exécutable `minishell` dans le répertoire courant.
+Append Redirection (>>): Redirect stdout to a file (append).
 
-```sh
+Here-doc (<<): Read input until a line containing the delimiter is seen.
+
+#####Built-ins
+I have implemented the following essential built-in commands:
+
+echo (with option -n)
+
+cd (relative or absolute paths)
+
+pwd
+
+export
+
+unset
+
+env
+
+exit
+
+### 🛠️ Implementation Details
+The Pipeline
+Lexer: Breaks the input string into tokens (words, pipes, redirections).
+
+Parser: Organizes tokens into a command structure (abstract syntax tree or simple command list).
+
+Expander: Handles environment variables (e.g., $USER) and removes quotes.
+
+Executor: Handles fork(), pipe(), dup2(), and waitpid() to run the commands in the correct order.
+
+Signal Handling
+Ctrl-C: Displays a new prompt on a newline.
+
+Ctrl-D: Exits the shell.
+
+Ctrl-\: Does nothing (matches Bash behavior).
+
+### 💻 Usage
+Compilation
+The project requires the readline library.
+
+Bash
+
 make
-```
+Execution
+Bash
 
-### Lancer le shell
-
-Une fois compilé, lancez le shell en exécutant l'exécutable `minishell` :
-
-```sh
 ./minishell
-```
+### 📂 Project Structure
+/src: Core logic (main loop, signal handling).
 
-## Utilisation
+/lexer_parser: Tokenization and command building.
 
-Une fois le shell lancé, vous pouvez entrer des commandes comme dans un terminal classique. Exemple :
+/exec: Execution engine, pipe handling, and redirections.
 
-```sh
-minishell-$ ls
-```
+/builtins: Implementation of internal shell commands.
 
-### Built-ins
+/includes: Header files.
 
-Minishell prend en charge plusieurs built-ins essentiels permettant de gérer certaines commandes directement sans passer par des processus externes.
+### 📬 Contact
+Login: qsomarri
 
-#### `cd`
-
-Permet de changer le répertoire de travail courant.
-
-```sh
-minishell$ cd /path/to/directory
-```
-
-#### `echo`
-
-Affiche une chaîne de texte à la sortie standard. Supporte `-n` pour ne pas ajouter de nouvelle ligne à la fin.
-
-```sh
-minishell$ echo "Hello, world!"
-```
-
-#### `env`
-
-Affiche les variables d'environnement actuelles.
-
-```sh
-minishell$ env
-```
-
-#### `exit`
-
-Permet de quitter le minishell. Vous pouvez aussi spécifier un code de sortie.
-
-```sh
-minishell$ exit
-minishell$ exit 42
-```
-
-## Redirections
-
-Le Minishell prend en charge les redirections suivantes :
-
-### Redirection de sortie (`>` ou `>>`)
-
-```sh
-echo "Hello World" > file.txt
-```
-
-Ajout au fichier existant :
-
-```sh
-echo "New Line" >> file.txt
-```
-
-### Redirection d'entrée (`<`)
-
-```sh
-cat < file.txt
-```
-
-## Pipes
-
-Vous pouvez chaîner des commandes avec des pipes (`|`) pour rediriger la sortie d'une commande vers l'entrée d'une autre :
-
-```sh
-minishell$ ls | grep "test"
-```
-
-## Heredoc
-
-Le Heredoc permet de passer plusieurs lignes d'entrée à une commande sans avoir à utiliser un fichier.
-
-Exemple d’utilisation avec `cat` :
-
-```sh
-minishell$ cat << EOF
-Ceci est un test
-Multiples lignes
-EOF
-```
-
-## Variables d'environnement
-
-Minishell permet d'utiliser et de manipuler les variables d'environnement, comme `$PATH`, `$HOME`, etc.
-
-```sh
-minishell$ echo $HOME
-```
-
+School: 42 Paris
