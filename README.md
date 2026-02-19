@@ -5,7 +5,7 @@ Minishell is a 42 school group project that consists of creating a simple shell.
 The goal was to recreate a miniature version of Bash, focusing on process synchronization, environment variable management, and redirection handling.
 
 ### 🚀 Features
-##### Core Functionality
+#### Core Functionality
 Interactive Prompt: Displays a prompt while waiting for a new command.
 
 Command Execution: Search and launch executables based on the PATH variable or relative/absolute paths.
@@ -27,7 +27,7 @@ Append Redirection (>>): Redirect stdout to a file (append).
 
 Here-doc (<<): Read input until a line containing the delimiter is seen.
 
-##### Built-ins
+#### Built-ins
 I have implemented the following essential built-in commands:
 
 echo (with option -n)
