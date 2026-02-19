@@ -48,23 +48,23 @@ I have implemented the following essential built-in commands:
 #### The Pipeline
 * Lexer: Breaks the input string into tokens (words, pipes, redirections).
 
-* Parser: Organizes tokens into a command structure (abstract syntax tree or simple command list).
+* Parser: Organizes tokens into a command structure (simple command list).
 
 * Expander: Handles environment variables (e.g., $USER) and removes quotes.
 
 * Executor: Handles fork(), pipe(), dup2(), and waitpid() to run the commands in the correct order.
 
 #### Signal Handling
-Ctrl-C: Displays a new prompt on a newline.
+* Ctrl-C: Displays a new prompt on a newline.
 
-Ctrl-D: Exits the shell.
+* Ctrl-D: Exits the shell.
 
-Ctrl-\: Does nothing (matches Bash behavior).
+* Ctrl-\: Does nothing (matches Bash behavior).
 
 ### 💻 Usage
 Compilation
 The project requires the readline library.
-
+```
 Bash
 
 make
@@ -72,16 +72,7 @@ Execution
 Bash
 
 ./minishell
-### 📂 Project Structure
-* /src: Core logic (main loop, signal handling).
-
-* /lexer_parser: Tokenization and command building.
-
-* /exec: Execution engine, pipe handling, and redirections.
-
-* /builtins: Implementation of internal shell commands.
-
-* /includes: Header files.
+```
 
 ### 📬 Contact
 * Login: qsomarri
