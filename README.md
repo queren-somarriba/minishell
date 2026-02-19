@@ -64,13 +64,11 @@ I have implemented the following essential built-in commands:
 ### 💻 Usage
 Compilation
 The project requires the readline library.
-```
-Bash
-
+```Bash
+# Compile the programme
 make
-Execution
-Bash
 
+# Execution
 ./minishell
 ```
 
