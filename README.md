@@ -1,4 +1,4 @@
-#Minishell - @42Paris
+# Minishell - @42Paris
 ###🐚 About the project
 Minishell is a 42 school group project that consists of creating a simple shell. It is a deep dive into processes, system calls, and the inner workings of a command-line interpreter.
 
