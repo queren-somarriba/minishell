@@ -6,55 +6,55 @@ The goal was to recreate a miniature version of Bash, focusing on process synchr
 
 ### 🚀 Features
 #### Core Functionality
-Interactive Prompt: Displays a prompt while waiting for a new command.
+* Interactive Prompt: Displays a prompt while waiting for a new command.
 
-Command Execution: Search and launch executables based on the PATH variable or relative/absolute paths.
+* Command Execution: Search and launch executables based on the PATH variable or relative/absolute paths.
 
-History: Working command history (up and down arrows).
+* History: Working command history (up and down arrows).
 
-Quotes Handling: * Single quotes (' '): Prevent the shell from interpreting meta-characters.
+* Quotes Handling: * Single quotes (' '): Prevent the shell from interpreting meta-characters.
 
-Double quotes (" "): Prevent interpreting meta-characters except for $ (environment variables).
+* Double quotes (" "): Prevent interpreting meta-characters except for $ (environment variables).
 
-Redirections & Pipes
-Pipes (|): Connect the output of one command to the input of the next.
+#### Redirections & Pipes
+* Pipes (|): Connect the output of one command to the input of the next.
 
-Input Redirection (<): Redirect file content to stdin.
+* Input Redirection (<): Redirect file content to stdin.
 
-Output Redirection (>): Redirect stdout to a file (overwrite).
+* Output Redirection (>): Redirect stdout to a file (overwrite).
 
-Append Redirection (>>): Redirect stdout to a file (append).
+* Append Redirection (>>): Redirect stdout to a file (append).
 
-Here-doc (<<): Read input until a line containing the delimiter is seen.
+* Here-doc (<<): Read input until a line containing the delimiter is seen.
 
 #### Built-ins
 I have implemented the following essential built-in commands:
 
-echo (with option -n)
+* echo (with option -n)
 
-cd (relative or absolute paths)
+* cd (relative or absolute paths)
 
-pwd
+* pwd
 
-export
+* export
 
-unset
+* unset
 
-env
+* env
 
-exit
+* exit
 
 ### 🛠️ Implementation Details
-The Pipeline
-Lexer: Breaks the input string into tokens (words, pipes, redirections).
+#### The Pipeline
+* Lexer: Breaks the input string into tokens (words, pipes, redirections).
 
-Parser: Organizes tokens into a command structure (abstract syntax tree or simple command list).
+* Parser: Organizes tokens into a command structure (abstract syntax tree or simple command list).
 
-Expander: Handles environment variables (e.g., $USER) and removes quotes.
+* Expander: Handles environment variables (e.g., $USER) and removes quotes.
 
-Executor: Handles fork(), pipe(), dup2(), and waitpid() to run the commands in the correct order.
+* Executor: Handles fork(), pipe(), dup2(), and waitpid() to run the commands in the correct order.
 
-Signal Handling
+#### Signal Handling
 Ctrl-C: Displays a new prompt on a newline.
 
 Ctrl-D: Exits the shell.
@@ -73,17 +73,17 @@ Bash
 
 ./minishell
 ### 📂 Project Structure
-/src: Core logic (main loop, signal handling).
+* /src: Core logic (main loop, signal handling).
 
-/lexer_parser: Tokenization and command building.
+* /lexer_parser: Tokenization and command building.
 
-/exec: Execution engine, pipe handling, and redirections.
+* /exec: Execution engine, pipe handling, and redirections.
 
-/builtins: Implementation of internal shell commands.
+* /builtins: Implementation of internal shell commands.
 
-/includes: Header files.
+* /includes: Header files.
 
 ### 📬 Contact
-Login: qsomarri
+* Login: qsomarri
 
-School: 42 Paris
+* School: 42 Paris
